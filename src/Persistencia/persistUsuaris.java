@@ -83,10 +83,11 @@ public class persistUsuaris {
         PreparedStatement ps;
 
         try {
-            String sentencia = "UPDATE usuaris SET nom=? WHERE nif=?";
+            String sentencia = "UPDATE usuaris SET nom=? , cognom = ? WHERE nif=?";
             ps = con.prepareStatement(sentencia);
-            ps.setString(2, u.getNif());
+            ps.setString(3, u.getNif());
             ps.setString(1, u.getNom());
+            ps.setString(2, u.getCognom());
             ps.executeUpdate();
             modificat = true;
             ps.close();
@@ -133,7 +134,7 @@ public class persistUsuaris {
                 llista.add(new Usuari(rs.getString(1), rs.getString(2), rs.getString(3)));
                 //for(int i = 0; i < llista.size() ; i++){ 
                
-                System.out.println(llista.get(i).getNom());
+                System.out.println(" Dni:"+ llista.get(i).getNif()+" nombre: "+llista.get(i).getNom()+" apellido:"+llista.get(i).getCognom());
                 i++;
 //}
                 }

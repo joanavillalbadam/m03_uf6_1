@@ -28,44 +28,63 @@ public class vistaText {
     controlador.GestioUsuaris gu = new controlador.GestioUsuaris();
     switch(opcion){
     
-        case 1:
+         case 1:
         //METODO AFEGIR
-            
-            model.Usuari usu = new model.Usuari("77128797E", "joana", "villalba");
+            System.out.println("Introduce el dni");
+            String dniafegir = leer.next();
+            System.out.println("Introduce el nombre");
+            String nombre = leer.next();
+             System.out.println("Introduce el apellido");
+            String apellido = leer.next();
+           
+            model.Usuari usu = new model.Usuari(dniafegir, nombre, apellido);
             gu.afegir(usu);
         break;
     
         case 2:
         //METODO AFEGIR LLISTA
             List<Usuari> lista = new ArrayList<Usuari>();
-            model.Usuari usu1 = new model.Usuari("123456789", "pepe", "pepito");
-            model.Usuari usu2 = new model.Usuari("12345745E", "mireia", "villalba");
-            model.Usuari usu3 = new model.Usuari("741852963", "mati", "astete");
-            model.Usuari usu4 = new model.Usuari("54698712P", "rocky", "villalba");
+            for(int i = 0; i < 5; i++){
+            System.out.println("Introduce el dni");
+            String dni1 = leer.next();
+            System.out.println("Introduce el nombre");
+            String nombre1 = leer.next();
+            System.out.println("Introduce el apellido");
+            String apellido1 = leer.next();
+            
+            model.Usuari usu1 = new model.Usuari(dni1, nombre1, apellido1);
             lista.add(0,usu1);
-            lista.add(1,usu2);
-            lista.add(2,usu3);
-            lista.add(3,usu4);
+            }
             
             gu.afegirLlista(lista);
         break;
         
         case 3:
         //METODO ESBORRAR
-            String nif = "77128797E";
+            System.out.println("Introduce el dni del usuario que quieres borrar");
+            String nif = leer.next();
             gu.eliminar(nif);
             
         break;
         
         case 4:
         //METODO MODIFICAR
-            model.Usuari usuM = new model.Usuari("123456789", "pepeModificado", "pepitoModificado");
+            System.out.println("Introduce el dni del usuario que quieres modificar");
+            String dni2 = leer.next();
+            System.out.println("Introduce el nombre");
+            String nombre1 = leer.next();
+            System.out.println("Introduce el apellido");
+            String apellido1 = leer.next();
+           
+            model.Usuari usuM = new model.Usuari(dni2, nombre1, apellido1);
             gu.modficar(usuM);
         break;
         
         case 5:
         //METODO CERCA PER NIF
-            gu.cercarNif("77128797E");
+            System.out.println("Introduce el dni del usuario que quieres buscar");
+            String dni3 = leer.next();
+            gu.cercarNif(dni3);
         break;
         
         case 6:
